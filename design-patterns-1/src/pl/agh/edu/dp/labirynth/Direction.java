@@ -12,4 +12,14 @@ public enum Direction {
         }
         return null;
     }
+
+    public static Direction getNext(Direction d) {
+        switch (d) {
+            case North: return East;
+            case East: return South;
+            case South: return West;
+            case West: return North;
+        }
+        return null;
+    }
 }

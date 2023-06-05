@@ -18,7 +18,7 @@ public class MazeFactory {
         int noRooms = random.nextInt(20) + 5;
 
         // creating rooms
-        for (int i = 0; i < noRooms; i++) { builder.createRoom(i); }
+        for (int i = 1; i <= noRooms; i++) { builder.createRoom(i); }
 
         Vector<Room> rooms = builder.getCurrentMaze().getRoomsInstance();
         // creating doors between rooms

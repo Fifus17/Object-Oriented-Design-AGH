@@ -2,6 +2,8 @@ package pl.agh.edu.dp.labirynth.factories;
 
 import pl.agh.edu.dp.labirynth.Direction;
 import pl.agh.edu.dp.labirynth.Maze;
+import pl.agh.edu.dp.labirynth.builders.EnchantedMazeBuilder;
+import pl.agh.edu.dp.labirynth.doors.Door;
 import pl.agh.edu.dp.labirynth.rooms.Room;
 import pl.agh.edu.dp.labirynth.builders.BombedMazeBuilder;
 
@@ -13,24 +15,33 @@ public class BombedMazeFactory extends MazeFactory {
     private final static BombedMazeFactory factory = new BombedMazeFactory();
     private BombedMazeFactory() {}
 
-    public Maze generateRandomBombedMaze() {
+    @Override
+    public Maze generateRandomMaze() {
         BombedMazeBuilder builder = new BombedMazeBuilder();
         Random random = new Random();
         int noRooms = random.nextInt(20) + 5;
 
         // creating rooms
-        for (int i = 0; i < noRooms; i++) { builder.createRoom(i); }
+        for (int i = 1; i <= noRooms; i++) { builder.createRoom(i); }
 
         Vector<Room> rooms = builder.getCurrentMaze().getRoomsInstance();
         // creating doors between rooms
-        for (int i = 0; i < (noRooms / 2); i++) {
-            int r1 = random.nextInt(rooms.size());
-            Room room1 = rooms.get(r1);
-            rooms.remove(r1);
+        Room room2 = rooms.get(0);
+        for (int i = 0; i < noRooms; i++) {
+            Room room1 = room2;
             int r2 = random.nextInt(rooms.size());
-            Room room2 = rooms.get(r2);
-            rooms.remove(r2);
-            builder.createDoor(room1, room2, Direction.values()[random.nextInt(Direction.values().length)]);
+            room2 = rooms.get(r2);
+
+            Direction d = Direction.values()[random.nextInt(Direction.values().length)];
+
+            for (int j = 0; j < 4; j++) {
+                if (!(room1.getSide(d) instanceof Door)) {
+                    builder.createDoor(room1, room2, d);
+                    break;
+                }
+                d = Direction.getNext(d);
+            }
+
         }
         return builder.getCurrentMaze();
     }

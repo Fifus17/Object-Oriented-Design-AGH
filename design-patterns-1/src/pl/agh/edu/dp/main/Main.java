@@ -11,13 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MazeGame mazeGame = new MazeGame();
-        MazeFactory factory = BombedMazeFactory.getInstance();
-        Maze maze = mazeGame.createMaze(factory);
+//        MazeFactory factory = EnchantedMazeFactory.getInstance(); // normal maze
+        MazeFactory factory = BombedMazeFactory.getInstance(); // player dies when going into bombed wall or going back to once visited room
+        MazeGame mazeGame = new MazeGame(factory);
         CountingMazeBuilder countingMazeBuilder = new CountingMazeBuilder();
-        countingMazeBuilder.getCounts(maze);
-
-        System.out.println(maze.getRoomNumbers());
+        countingMazeBuilder.getCounts(mazeGame.getMaze());
+        mazeGame.play();
     }
 }
 
