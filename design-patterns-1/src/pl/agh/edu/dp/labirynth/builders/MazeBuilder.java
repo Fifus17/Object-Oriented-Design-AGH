@@ -1,8 +1,8 @@
 package pl.agh.edu.dp.labirynth.builders;
 
 import pl.agh.edu.dp.labirynth.Direction;
-import pl.agh.edu.dp.labirynth.Room;
-import pl.agh.edu.dp.labirynth.Wall;
+import pl.agh.edu.dp.labirynth.rooms.Room;
+import pl.agh.edu.dp.labirynth.walls.Wall;
 
 public class MazeBuilder {
 

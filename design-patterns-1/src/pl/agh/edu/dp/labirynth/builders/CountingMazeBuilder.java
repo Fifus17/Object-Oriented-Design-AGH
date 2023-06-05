@@ -1,6 +1,8 @@
 package pl.agh.edu.dp.labirynth.builders;
 
 import pl.agh.edu.dp.labirynth.*;
+import pl.agh.edu.dp.labirynth.rooms.Room;
+import pl.agh.edu.dp.labirynth.walls.Wall;
 
 public class CountingMazeBuilder {
 

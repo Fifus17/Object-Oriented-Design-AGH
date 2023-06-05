@@ -2,32 +2,34 @@ package pl.agh.edu.dp.labirynth.builders;
 
 import pl.agh.edu.dp.labirynth.*;
 import pl.agh.edu.dp.labirynth.doors.Door;
+import pl.agh.edu.dp.labirynth.doors.EnchantedDoor;
+import pl.agh.edu.dp.labirynth.rooms.EnchantedRoom;
 import pl.agh.edu.dp.labirynth.rooms.Room;
+import pl.agh.edu.dp.labirynth.walls.EnchantedWall;
 import pl.agh.edu.dp.labirynth.walls.Wall;
 
-public class StandardMazeBuilder extends MazeBuilder {
-
+public class EnchantedMazeBuilder extends MazeBuilder {
     Maze currentMaze;
 
-    public StandardMazeBuilder() {
+    public EnchantedMazeBuilder() {
         currentMaze = new Maze();
     }
 
-    public StandardMazeBuilder(Maze maze) {
+    public EnchantedMazeBuilder(Maze maze) {
         currentMaze = maze;
     }
 
     @Override
     public Room createRoom(int number) {
-        Room room = new Room(number);
-        for (Direction d: Direction.values()) { room.setSide(d, new Wall()); }
+        Room room = new EnchantedRoom(number);
+        for (Direction d: Direction.values()) { room.setSide(d, new EnchantedWall()); }
         currentMaze.addRoom(room);
         return room;
     }
 
     public Door createDoor(Room r1, Room r2, Direction d) { // direction of the wall in the first room
         CommonWall(r1, r2, d);
-        Door door = new Door(r1, r2);
+        Door door = new EnchantedDoor(r1, r2);
         r1.setSide(d, door);
         r2.setSide(Direction.getOpposite(d), door);
         return door;
@@ -42,7 +44,7 @@ public class StandardMazeBuilder extends MazeBuilder {
     }
 
     private void CommonWall(Room r1, Room r2, Direction d) {
-        Wall wall = new Wall();
+        Wall wall = new EnchantedWall();
         wall.setAsCommonWall();
         r1.setSide(d, wall);
         r2.setSide(Direction.getOpposite(d), wall);

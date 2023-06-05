@@ -1,4 +1,6 @@
-package pl.agh.edu.dp.labirynth;
+package pl.agh.edu.dp.labirynth.walls;
+
+import pl.agh.edu.dp.labirynth.MapSite;
 
 public class Wall extends MapSite {
 
