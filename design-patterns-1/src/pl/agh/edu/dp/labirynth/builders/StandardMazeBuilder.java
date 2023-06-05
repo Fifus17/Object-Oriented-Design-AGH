@@ -1,6 +1,9 @@
-package pl.agh.edu.dp.labirynth;
+package pl.agh.edu.dp.labirynth.builders;
 
-public class StandardMazeBuilder extends MazeBuilder{
+import pl.agh.edu.dp.labirynth.*;
+import pl.agh.edu.dp.labirynth.builders.MazeBuilder;
+
+public class StandardMazeBuilder extends MazeBuilder {
 
     Maze currentMaze;
 
@@ -38,6 +41,7 @@ public class StandardMazeBuilder extends MazeBuilder{
 
     private void CommonWall(Room r1, Room r2, Direction d) {
         Wall wall = new Wall();
+        wall.setAsCommonWall();
         r1.setSide(d, wall);
         r2.setSide(Direction.getOpposite(d), wall);
     }

@@ -1,5 +1,7 @@
 package pl.agh.edu.dp.labirynth;
 
+import pl.agh.edu.dp.labirynth.builders.StandardMazeBuilder;
+
 public class MazeGame {
     public Maze createMaze(StandardMazeBuilder builder){
         Maze maze = new Maze();

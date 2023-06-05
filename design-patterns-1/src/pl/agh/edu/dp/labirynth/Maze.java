@@ -17,6 +17,12 @@ public class Maze {
         this.rooms = rooms;
     }
 
+    public Vector<Room> getRoomsInstance() {
+        Vector<Room> vector = new Vector<>();
+        vector.addAll(rooms);
+        return vector;
+    }
+
     public int getRoomNumbers()
     {
         return rooms.size();
