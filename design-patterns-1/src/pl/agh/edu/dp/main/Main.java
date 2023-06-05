@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         MazeGame mazeGame = new MazeGame();
-        MazeFactory factory = new BombedMazeFactory();
+        MazeFactory factory = BombedMazeFactory.getInstance();
         Maze maze = mazeGame.createMaze(factory);
         CountingMazeBuilder countingMazeBuilder = new CountingMazeBuilder();
         countingMazeBuilder.getCounts(maze);

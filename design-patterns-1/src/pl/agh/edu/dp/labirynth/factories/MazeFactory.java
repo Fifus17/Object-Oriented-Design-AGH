@@ -10,6 +10,8 @@ import java.util.Vector;
 
 public class MazeFactory {
 
+
+
     public Maze generateRandomMaze() {
         StandardMazeBuilder builder = new StandardMazeBuilder();
         Random random = new Random();
@@ -31,4 +33,5 @@ public class MazeFactory {
         }
         return builder.getCurrentMaze();
     }
+
 }

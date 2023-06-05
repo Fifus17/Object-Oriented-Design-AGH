@@ -10,6 +10,9 @@ import java.util.Vector;
 
 public class BombedMazeFactory extends MazeFactory {
 
+    private final static BombedMazeFactory factory = new BombedMazeFactory();
+    private BombedMazeFactory() {}
+
     public Maze generateRandomBombedMaze() {
         BombedMazeBuilder builder = new BombedMazeBuilder();
         Random random = new Random();
@@ -31,4 +34,6 @@ public class BombedMazeFactory extends MazeFactory {
         }
         return builder.getCurrentMaze();
     }
+
+    public static BombedMazeFactory getInstance() { return factory; }
 }
